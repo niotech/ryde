@@ -311,7 +311,6 @@ class UserAPITest(APITestCase):
         )
         url = reverse('user-search-by-name') + '?q=Test'
         response = self.client.get(url)
-        print(f"Search Users API Response: {response.data}")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data['results']), 1)
 
@@ -339,7 +338,6 @@ class UserAPITest(APITestCase):
 
         url = reverse('user-nearby-friends')
         response = self.client.get(url)
-        print(f"Nearby Users API Response: {response.data}")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data['nearby_users']), 1)
 
