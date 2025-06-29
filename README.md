@@ -372,5 +372,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Support
 
 For support and questions, please contact:
-- Email: contact@ryde.com
-- Documentation: http://localhost:8000/swagger/
+- Email: benny.christanto@gmail.com
+- Documentation: http://localhost:8000/swagger/  or http://localhost:8000/redoc/
