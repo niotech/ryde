@@ -337,17 +337,8 @@ class FriendshipAPITest(APITestCase):
             status='accepted'
         )
 
-        # Debug: Check what friendships exist
-        all_friendships = Friendship.objects.all()
-        print(f"All friendships in DB: {list(all_friendships.values('from_user__name', 'to_user__name', 'status'))}")
-
-        # Debug: Check what get_friends returns
-        friends = Friendship.get_friends(self.user1)
-        print(f"Friends returned by get_friends: {list(friends.values('name', 'email'))}")
-
         url = reverse('friendship-friends')
         response = self.client.get(url)
-        print(f"Friends API Response: {response.data}")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data['friends']), 2)
 
@@ -432,7 +423,6 @@ class FriendshipAPITest(APITestCase):
 
         url = reverse('friendship-nearby-friends')
         response = self.client.get(url)
-        print(f"Nearby Friends API Response: {response.data}")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data['nearby_friends']), 1)
 
@@ -460,7 +450,6 @@ class FriendshipAPITest(APITestCase):
 
         url = reverse('friendship-search-friends') + '?q=User'
         response = self.client.get(url)
-        print(f"Search Friends API Response: {response.data}")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data['results']), 1)
 
