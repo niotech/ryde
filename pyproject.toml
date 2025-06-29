@@ -1,0 +1,38 @@
+[project]
+name = "challenge"
+version = "0.1.0"
+description = "Ryde Backend - RESTful API for User Management"
+authors = [
+    {name = "Benny Christanto",email = "niotech5@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "django>=5.2.3,<6.0.0",
+    "djangorestframework>=3.14.0,<4.0.0",
+    "django-cors-headers>=4.3.1,<5.0.0",
+    "psycopg2-binary>=2.9.9,<3.0.0",
+    "python-decouple>=3.8,<4.0.0",
+    "drf-yasg>=1.21.7,<2.0.0",
+    "django-filter>=23.5,<24.0.0",
+    "celery>=5.3.4,<6.0.0",
+    "redis>=5.0.1,<6.0.0",
+    "django-extensions>=3.2.3,<4.0.0",
+    "geopy>=2.4.1,<3.0.0",
+    "pytest>=7.4.3,<8.0.0",
+    "pytest-django>=4.7.0,<5.0.0",
+    "factory-boy>=3.3.0,<4.0.0",
+    "coverage>=7.3.2,<8.0.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=23.11.0,<24.0.0",
+    "flake8>=6.1.0,<7.0.0",
+    "isort>=5.12.0,<6.0.0",
+    "pre-commit>=3.6.0,<4.0.0"
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
