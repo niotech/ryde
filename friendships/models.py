@@ -147,20 +147,20 @@ class Friendship(models.Model):
         """
         from users.models import User
 
-        friend_ids = cls.objects.filter(
+        friend_id_tuples = cls.objects.filter(
             models.Q(from_user=user, status='accepted') |
             models.Q(to_user=user, status='accepted')
         ).values_list('from_user_id', 'to_user_id')
 
         # Extract friend IDs (excluding the user themselves)
-        friend_ids = set()
-        for from_id, to_id in friend_ids:
+        friend_id_set = set()
+        for from_id, to_id in friend_id_tuples:
             if from_id == user.id:
-                friend_ids.add(to_id)
+                friend_id_set.add(to_id)
             else:
-                friend_ids.add(from_id)
+                friend_id_set.add(from_id)
 
-        return User.objects.filter(id__in=friend_ids)
+        return User.objects.filter(id__in=friend_id_set)
 
     @classmethod
     def get_followers(cls, user):

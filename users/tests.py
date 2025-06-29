@@ -303,6 +303,12 @@ class UserAPITest(APITestCase):
 
     def test_search_users(self):
         """Test user search functionality."""
+        # Create a second user with 'Test' in the name
+        User.objects.create_user(
+            'test2@example.com',
+            name='Test User 2',
+            password='testpass456',
+        )
         url = reverse('user-search-by-name') + '?q=Test'
         response = self.client.get(url)
         print(f"Search Users API Response: {response.data}")
@@ -322,13 +328,13 @@ class UserAPITest(APITestCase):
         self.user.longitude = Decimal('-74.0060')
         self.user.save()
 
-        # Create nearby user
+        # Create truly nearby user (within 10km)
         User.objects.create_user(
             'nearby@example.com',
             name='Nearby User',
             password='nearby123',
-            latitude=Decimal('34.0522'),
-            longitude=Decimal('-118.2437'),
+            latitude=Decimal('40.7130'),
+            longitude=Decimal('-74.0062'),
         )
 
         url = reverse('user-nearby-friends')
